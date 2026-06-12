@@ -1,10 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документация API</title>
+
+```
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+        background: #f4f6f9;
+        padding: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #222;
+    }
+
+    .container {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .card {
+        background: white;
+        width: 420px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,.1);
+        overflow: hidden;
+    }
+
+    .card-header {
+        padding: 20px;
+        color: white;
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+    }
+
+    .drf {
+        background: #198754;
+    }
+
+    .swagger {
+        background: #0d6efd;
+    }
+
+    .redoc {
+        background: #dc3545;
+    }
+
+    .card-body {
+        padding: 20px;
+    }
+
+    .endpoint {
+        display: block;
+        text-decoration: none;
+        color: #333;
+        background: #f8f9fa;
+        margin-bottom: 10px;
+        padding: 12px;
+        border-radius: 8px;
+        transition: .2s;
+        border-left: 5px solid #ccc;
+    }
+
+    .endpoint:hover {
+        background: #e9ecef;
+        transform: translateX(5px);
+    }
+
+    .get {
+        border-left-color: #28a745;
+    }
+
+    .post {
+        border-left-color: #0d6efd;
+    }
+
+    .put {
+        border-left-color: #fd7e14;
+    }
+
+    .patch {
+        border-left-color: #6f42c1;
+    }
+
+    .delete {
+        border-left-color: #dc3545;
+    }
+
+    .method {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+</style>
+```
+
 </head>
 <body>
-$END$
+
+<h1>Документация API пользователей</h1>
+
+<div class="container">
+
+```
+<!-- Django REST Framework -->
+<div class="card">
+    <div class="card-header drf">
+        Django REST Framework
+    </div>
+
+    <div class="card-body">
+
+        <a href="/users/" class="endpoint get">
+            <span class="method">GET</span>/users/
+        </a>
+
+        <a href="/users/create/" class="endpoint post">
+            <span class="method">POST</span>/users/create/
+        </a>
+
+        <a href="/users/token/" class="endpoint post">
+            <span class="method">POST</span>/users/token/
+        </a>
+
+        <a href="/users/token/refresh/" class="endpoint post">
+            <span class="method">POST</span>/users/token/refresh/
+        </a>
+
+        <a href="/users/1/" class="endpoint get">
+            <span class="method">GET</span>/users/{id}/
+        </a>
+
+        <a href="/users/1/update/" class="endpoint put">
+            <span class="method">PUT</span>/users/{id}/update/
+        </a>
+
+        <a href="/users/1/update/" class="endpoint patch">
+            <span class="method">PATCH</span>/users/{id}/update/
+        </a>
+
+        <a href="/users/1/delete/" class="endpoint delete">
+            <span class="method">DELETE</span>/users/{id}/delete/
+        </a>
+
+    </div>
+</div>
+
+<!-- Swagger -->
+<div class="card">
+    <div class="card-header swagger">
+        Swagger
+    </div>
+
+    <div class="card-body">
+
+        <a href="/swagger/" class="endpoint get">
+            <span class="method">SWAGGER</span>/swagger/
+        </a>
+
+
+
+    </div>
+</div>
+
+<!-- ReDoc -->
+<div class="card">
+    <div class="card-header redoc">
+        ReDoc
+    </div>
+
+    <div class="card-body">
+
+        <a href="/redoc/" class="endpoint get">
+            <span class="method">REDOC</span>/redoc/
+        </a>
+
+    </div>
+</div>
+```
+
+</div>
+
 </body>
 </html>

@@ -7,7 +7,10 @@ from rest_framework.permissions import IsAuthenticated, AllowAny
 from .models import User
 from .user_serializers import UserSerializer, UserCreateSerializer, UserTokenObtainSerializer, UserUpdateSerializer
 
+from django.shortcuts import render
 
+def api_docs_home(request):
+    return render(request, "chuse_doc_ui.html")
 
 class UserListAPIView(ListAPIView):
     queryset = User.objects.all()

@@ -1,13 +1,12 @@
 version: '3.8'
+
 services:
   web:
     build: .
     ports:
-      - 8000:8000
+      - "8000:8000"
     environment:
-        - DJANGO_SETTINGS_MODULE=users.settings
+      - DJANGO_SETTINGS_MODULE=users.settings
     volumes:
-        - .:/app
-    command:
-      - sh -c "python manage.py migrate && python createsuperuser --noinput --email=admin@admin.com --password=admin &&
-      - python manage.py runserver 0.0.0.0:8000"
+      - .:/app
+    command: sh /entrypoint.sh

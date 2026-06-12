@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Документация API</title>
 
-```
 <style>
     * {
         margin: 0;
@@ -60,6 +59,9 @@
     .redoc {
         background: #dc3545;
     }
+    .admin {
+        background: #ffc107;
+    }
 
     .card-body {
         padding: 20px;
@@ -107,20 +109,17 @@
         margin-right: 10px;
     }
 </style>
-```
-
 </head>
 <body>
 
-<h1>Документация API пользователей</h1>
+<h1>Документация API для тестов</h1>
 
 <div class="container">
 
-```
 <!-- Django REST Framework -->
 <div class="card">
     <div class="card-header drf">
-        Django REST Framework
+        DRF
     </div>
 
     <div class="card-body">
@@ -191,7 +190,20 @@
 
     </div>
 </div>
-```
+    <!-- Admin -->
+<div class="card">
+    <div class="card-header admin">
+        ADMIN
+    </div>
+
+    <div class="card-body">
+
+        <a href="/admin/" class="endpoint get">
+            <span class="method">ADMIN</span>/admin/
+        </a>
+
+    </div>
+</div>
 
 </div>
 

@@ -4,6 +4,6 @@ djangorestframework
 Pillow
 djangorestframework-simplejwt
 requests
-
 django-cors-headers
 drf-yasg
+phonenumber_field

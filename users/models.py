@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager
 from django.utils.translation import gettext_lazy as _
-
+from phonenumber_field.modelfields import PhoneNumberField
 
 NULLABLE = {
     'blank': True,
@@ -22,7 +22,7 @@ class User(AbstractBaseUser):
     role = models.CharField(max_length=9, choices=UserRoles.choices, default=UserRoles.MEMBER, verbose_name=_('Role'))
     firstName = models.CharField(max_length=30, verbose_name=_('First Name'), **NULLABLE)
     lastName = models.CharField(max_length=30, verbose_name=_('Last Name'), **NULLABLE)
-    phone_number = models.CharField(max_length=15, verbose_name=_('Phone Number'), **NULLABLE)
+    phone_number = PhoneNumberField(max_length=15, verbose_name=_('Phone Number'), **NULLABLE)
     is_active = models.BooleanField(default=True, verbose_name=_('Is Active'))
 
     USERNAME_FIELD = 'email'

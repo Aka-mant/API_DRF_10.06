@@ -13,7 +13,7 @@ class Command(BaseCommand):
                 'role': 'admin',
                 'lastName': 'Doe',
                 'firstName': 'John',
-                'password': os.getenv('SUPERUSER_PASSWORD', ''),
+                'password': '',
                 'is_staff': True,
                 'is_superuser': True,
                 'is_active': True,

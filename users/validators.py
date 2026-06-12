@@ -1,4 +1,6 @@
 import re
+
+
 from django.core.exceptions import ValidationError
 
 
@@ -8,7 +10,7 @@ class PasswordValidator:
         self.field = field
 
     def __call__(self, value):
-        reg_patter = re.compile(r'^[A-Za-z0-9]+$]]')
-        tmp_value = dict(value).get(self.field)
+        reg_patter = re.compile(r'^[A-Za-z0-9]+$')
+        tmp_value= dict(value).get(self.field)
         if not bool(reg_patter.match(tmp_value)):
             raise ValidationError('Password must contain only letters and numbers')

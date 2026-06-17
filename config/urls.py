@@ -39,6 +39,7 @@ urlpatterns = [
 
     # my apps
     path('users/', include('users.urls'), name='users'),
+    path('', include('sections.urls'), name='sections'),
 
     #documentation
     path('', api_docs_home, name='api_docs_home'),

@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     "phonenumber_field",
 
     # my apps
-    'users'
+    'users',
     'sections'
 ]
 

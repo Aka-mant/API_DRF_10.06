@@ -19,7 +19,7 @@ create = 'create/'
 retrieve = 'retrieve/'
 update = 'update/'
 delete = 'delete/'
-list = 'list/'
+
 int_pk = '<int:pk>/'
 
 

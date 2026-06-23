@@ -14,12 +14,10 @@ router = DefaultRouter()
 
 section = 'sections/'
 content = 'contents/'
-question = 'questions/'
 create = 'create/'
 retrieve = 'retrieve/'
 update = 'update/'
 delete = 'delete/'
-
 int_pk = '<int:pk>/'
 
 

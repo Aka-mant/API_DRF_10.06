@@ -219,42 +219,6 @@
     "model": "auth.permission",
     "pk": 25,
     "fields": {
-        "name": "Can add Content",
-        "content_type": 7,
-        "codename": "add_content"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 26,
-    "fields": {
-        "name": "Can change Content",
-        "content_type": 7,
-        "codename": "change_content"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 27,
-    "fields": {
-        "name": "Can delete Content",
-        "content_type": 7,
-        "codename": "delete_content"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 28,
-    "fields": {
-        "name": "Can view Content",
-        "content_type": 7,
-        "codename": "view_content"
-    }
-},
-{
-    "model": "auth.permission",
-    "pk": 29,
-    "fields": {
         "name": "Can add Section",
         "content_type": 8,
         "codename": "add_section"
@@ -262,7 +226,7 @@
 },
 {
     "model": "auth.permission",
-    "pk": 30,
+    "pk": 26,
     "fields": {
         "name": "Can change Section",
         "content_type": 8,
@@ -271,7 +235,7 @@
 },
 {
     "model": "auth.permission",
-    "pk": 31,
+    "pk": 27,
     "fields": {
         "name": "Can delete Section",
         "content_type": 8,
@@ -280,11 +244,47 @@
 },
 {
     "model": "auth.permission",
-    "pk": 32,
+    "pk": 28,
     "fields": {
         "name": "Can view Section",
         "content_type": 8,
         "codename": "view_section"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 29,
+    "fields": {
+        "name": "Can add Content",
+        "content_type": 7,
+        "codename": "add_content"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 30,
+    "fields": {
+        "name": "Can change Content",
+        "content_type": 7,
+        "codename": "change_content"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 31,
+    "fields": {
+        "name": "Can delete Content",
+        "content_type": 7,
+        "codename": "delete_content"
+    }
+},
+{
+    "model": "auth.permission",
+    "pk": 32,
+    "fields": {
+        "name": "Can view Content",
+        "content_type": 7,
+        "codename": "view_content"
     }
 },
 {
@@ -353,23 +353,23 @@
 },
 {
     "model": "sessions.session",
-    "pk": "dl4mdp8ftyb4l3o64pmlui0xanvuynvy",
+    "pk": "sgyfi8ra3c7tlu3eeo55lr9euwxm743d",
     "fields": {
-        "session_data": ".eJxVjEEOwiAQAP-yZ0Ngtxbo0XvfQBaWStXQpLQn499Nkx70OjOZNwTetxL2ltcwCwzQweWXRU7PXA8hD673RaWlbusc1ZGo0zY1LpJft7P9GxRuBQaI4tEno1OmyYvuOXqJIpO2tjdEhGxIkkGiznm8GrSEzmm2mcXYmODzBemGN5E:1wY8A8:ewB2kwfXUpmEY65p-9zqb1DC5yDbSh6QZBoQGikiCQU",
-        "expire_date": "2026-06-26T20:07:32.329Z"
+        "session_data": ".eJxVjDsKwzAQBe-ydRBW9FnJZXqfQax-kZMggWVXIXcPAhdJ9WBmeG9wdOzFHT1tbo0wg4TLL_MUnqkOER9U742FVvdt9Wwk7LSdLS2m1-1s_w4K9QIz-MkKL3IileVVjzGEHJORFiknzaOhySvjCQUKLa3CkKUMwmrUgWv4fAHzuDfC:1wdXpG:YvtwPRr2EfYTmDpyCvGza9Sl4LIbGQ_Sko2VoCR8aNk",
+        "expire_date": "2026-07-11T18:32:22.740Z"
     }
 },
 {
     "model": "users.user",
-    "pk": 1,
+    "pk": 4,
     "fields": {
-        "password": "",
-        "last_login": null,
+        "password": "pbkdf2_sha256$1200000$P9deTnGi199xzgocw3fXco$uXck9b3iLAbAEq5aSqQoZP9rdtckxRUKtp0pzKh0nrI=",
+        "last_login": "2026-06-27T18:32:22.737Z",
         "is_superuser": true,
         "first_name": "",
         "last_name": "",
         "is_staff": true,
-        "date_joined": "2026-06-12T20:04:06.746Z",
+        "date_joined": "2026-06-27T18:30:19.596Z",
         "email": "example@example.com",
         "role": "admin",
         "firstName": "John",
@@ -382,15 +382,15 @@
 },
 {
     "model": "users.user",
-    "pk": 2,
+    "pk": 5,
     "fields": {
-        "password": "",
+        "password": "pbkdf2_sha256$1200000$r5lTDKUHbkrLYam5LNfDE4$vIYfFXJ7dULvMDItA1fHBCBCW3DP2kmYyAT7gt+iiTc=",
         "last_login": null,
         "is_superuser": false,
         "first_name": "",
         "last_name": "",
         "is_staff": true,
-        "date_joined": "2026-06-12T20:04:06.753Z",
+        "date_joined": "2026-06-27T18:30:20.020Z",
         "email": "moderator@example.com",
         "role": "moderator",
         "firstName": "Moderator",
@@ -403,40 +403,19 @@
 },
 {
     "model": "users.user",
-    "pk": 3,
+    "pk": 6,
     "fields": {
-        "password": "",
+        "password": "pbkdf2_sha256$1200000$rCNX6dZCyLMm8c7tg9C0s0$vJd0xd46IlZfh3RDqupYk1wXuEOr7xUdB9DQ29F9nMU=",
         "last_login": null,
         "is_superuser": false,
         "first_name": "",
         "last_name": "",
         "is_staff": false,
-        "date_joined": "2026-06-12T20:04:06.760Z",
+        "date_joined": "2026-06-27T18:30:20.448Z",
         "email": "user@example.com",
-        "role": "user",
+        "role": "member",
         "firstName": "User",
         "lastName": "User",
-        "phone_number": null,
-        "is_active": true,
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "users.user",
-    "pk": 4,
-    "fields": {
-        "password": "pbkdf2_sha256$1200000$PpdmVNpHu7uk9ii56E70tj$caSo4YzSIIj+fmtKV58r23UTRoFrRLPKv7dh5TXltVA=",
-        "last_login": "2026-06-12T20:07:32.326Z",
-        "is_superuser": true,
-        "first_name": "",
-        "last_name": "",
-        "is_staff": true,
-        "date_joined": "2026-06-12T20:06:17.959Z",
-        "email": "admin@admin.com",
-        "role": "member",
-        "firstName": null,
-        "lastName": null,
         "phone_number": null,
         "is_active": true,
         "groups": [],

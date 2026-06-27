@@ -49,14 +49,13 @@ Backend REST API сервис для управления пользовател
 
 # 📖 Документация API
 
-- Swagger: `/swagger/`
-- Redoc: `/redoc/`
+BASE_HTML → http://localhost:8000/ddd/    
+Admin → http://localhost:8000/admin/    
+Swagger → http://localhost:8000/swagger/    
+Redoc → http://localhost:8000/redoc/  
 
 ---
 
-# 📖 ADMIN UI
-
-- /admin/ 
 
 
 
@@ -86,17 +85,15 @@ docker compose up -d
 docker compose exec web python manage.py migrate    
 docker compose exec web python manage.py createsuperuser
 
-BASE_HTML → http://localhost:8000/    
-Admin → http://localhost:8000/admin/    
-Swagger → http://localhost:8000/swagger/    
-Redoc → http://localhost:8000/redoc/    
+  
 
 
 # 📂 Структура проекта   
 
 project/    
 ├── config/  
-├── static/                                           
+├── static/     
+├── sections/  
 ├── users/  
 ├── manage.py   
 ├── requirements.txt    

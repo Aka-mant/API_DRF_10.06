@@ -15,25 +15,25 @@ class SectionListAPIView(ListAPIView):
     queryset = Section.objects.all()
     serializer_class = SectionListSerializer
     permission_classes = [IsAuthenticated]
-    # pagination_class = SectionPagination
+    pagination_class = SectionPagination
     paginator = SectionPagination
 
 class SectionCreateAPIView(CreateAPIView):
 
     serializer_class = SectionSerializer
-    # permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
+    permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
 
 
 class SectionRetrieveAPIView(RetrieveAPIView):
     serializer_class = SectionSerializer
     queryset = Section.objects.all()
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 
 class SectionUpdateAPIView(UpdateAPIView):
     serializer_class = SectionSerializer
     queryset = Section.objects.all()
-    # permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
+    permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
 
 
 class SectionDeleteAPIView(DestroyAPIView):
@@ -46,7 +46,7 @@ class SectionDeleteAPIView(DestroyAPIView):
 class ContentListAPIView(ListAPIView):
     serializer_class = ContentListSerializer
     queryset = Content.objects.all()
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     pagination_class = ContentPagination
 
 
@@ -58,17 +58,17 @@ class ContentCreateAPIView(CreateAPIView):
 class ContentRetrieveAPIView(RetrieveAPIView):
     serializer_class = ContentSerializer
     queryset = Content.objects.all()
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
 class ContentUpdateAPIView(UpdateAPIView):
     serializer_class = ContentSerializer
     queryset = Content.objects.all()
-    #permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
+    permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
 
 
 class ContentDeleteAPIView(DestroyAPIView):
     serializer_class = ContentSerializer
     queryset = Content.objects.all()
-    #permission_classes = [IsAuthenticated, IsSuperuser]
+    permission_classes = [IsAuthenticated, IsSuperuser]
 
 

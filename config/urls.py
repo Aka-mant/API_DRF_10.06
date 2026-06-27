@@ -10,7 +10,7 @@ from drf_yasg import openapi
 from drf_yasg.views import get_schema_view
 
 from rest_framework import permissions
-
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 from users.views import api_docs_home
 
@@ -40,6 +40,8 @@ urlpatterns = [
     # my apps
     path('users/', include('users.urls'), name='users'),
     path('', include('sections.urls'), name='sections'),
+
+    path("token/", TokenObtainPairView.as_view()),
 
     #documentation
     path('ddd/', api_docs_home, name='api_docs_home'),

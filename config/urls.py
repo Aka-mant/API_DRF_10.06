@@ -41,7 +41,7 @@ urlpatterns = [
     path('users/', include('users.urls'), name='users'),
     path('', include('sections.urls'), name='sections'),
 
-    path("token/", TokenObtainPairView.as_view()),
+
 
     #documentation
     path('ddd/', api_docs_home, name='api_docs_home'),

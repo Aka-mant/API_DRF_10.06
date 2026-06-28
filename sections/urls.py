@@ -12,8 +12,8 @@ app_name = SectionsConfig.name
 
 router = DefaultRouter()
 
-section = 'sections/'
-content = 'contents/'
+sections = 'sections/'
+content = 'content/'
 create = 'create/'
 retrieve = 'retrieve/'
 update = 'update/'
@@ -23,11 +23,11 @@ int_pk = '<int:pk>/'
 
 urlpatterns = [
     # sections urlspatterns
-    path(p.join(section), SectionListAPIView.as_view(), name='section_list'),
-    path(p.join(section, create), SectionCreateAPIView.as_view(), name='section_create'),
-    path(p.join(section, int_pk), SectionRetrieveAPIView.as_view(), name='section_detail'),
-    path(p.join(section, int_pk, update), SectionUpdateAPIView.as_view(), name='section_update'),
-    path(p.join(section, int_pk, delete), SectionDeleteAPIView.as_view(), name='section_delete'),
+    path(p.join(sections), SectionListAPIView.as_view(), name='section_list'),
+    path(p.join(sections, create), SectionCreateAPIView.as_view(), name='section_create'),
+    path(p.join(sections, int_pk), SectionRetrieveAPIView.as_view(), name='section_detail'),
+    path(p.join(sections, int_pk, update), SectionUpdateAPIView.as_view(), name='section_update'),
+    path(p.join(sections, int_pk, delete), SectionDeleteAPIView.as_view(), name='section_delete'),
     # content urlspatterns
     path(p.join(content), ContentListAPIView.as_view(), name='content_list'),
     path(p.join(content, create), ContentCreateAPIView.as_view(), name='content_create'),

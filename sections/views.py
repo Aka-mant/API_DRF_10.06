@@ -1,3 +1,4 @@
+from rest_framework import request
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 
 from rest_framework.response import Response
@@ -16,7 +17,8 @@ class SectionListAPIView(ListAPIView):
     serializer_class = SectionListSerializer
     permission_classes = [IsAuthenticated]
     pagination_class = SectionPagination
-    paginator = SectionPagination
+
+
 
 class SectionCreateAPIView(CreateAPIView):
 

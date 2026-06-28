@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from sections.models import Section, Content
+from sections.models import Section, Content, Question
 
 
 # Register your models here.
@@ -19,3 +19,9 @@ class ContentAdmin(admin.ModelAdmin):
     search_fields = ('title', 'section', )
     ordering = ('id', 'section',)
 
+@admin.register(Question)
+class QuestionAdmin(admin.ModelAdmin):
+    list_display = ('id','section', 'answer' )
+    list_filter = ('section', )
+    ordering = ('id', 'section',)
+    search_fields = ('question',  )

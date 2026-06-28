@@ -9,5 +9,11 @@ class SectionPagination(PageNumberPagination):
 
 
 
+
 class ContentPagination(SectionPagination):
     page_size = 5
+
+
+class QuestionPagination(SectionPagination):
+    page_size = 5
+

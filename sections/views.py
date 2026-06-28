@@ -5,12 +5,12 @@ from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 
 
-from sections.models import Section, Content
+from sections.models import Section, Content, Question
 from sections.permitions import IsModerator, IsSuperuser
 from sections.serializers.section_serializers import SectionSerializer, SectionListSerializer
 from sections.serializers.content_serializers import ContentSerializer, ContentListSerializer, ContentSectionSerializer
-
-from sections.paginators import SectionPagination, ContentPagination
+from sections.serializers.question_serializers import QuestionSerializer, QuestionSectionSerializer
+from sections.paginators import SectionPagination, ContentPagination, QuestionPagination
 
 class SectionListAPIView(ListAPIView):
     queryset = Section.objects.all()
@@ -74,3 +74,21 @@ class ContentDeleteAPIView(DestroyAPIView):
     permission_classes = [IsAuthenticated, IsSuperuser]
 
 
+class QuestionListAPIView(ListAPIView):
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
+    permission_classes = [IsAuthenticated]
+    pagination_class = QuestionPagination
+
+class QuestionRetrieveAPIView(RetrieveAPIView):
+    serializer_class = QuestionSerializer
+    queryset = Question.objects.all()
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request, *args, **kwargs):
+        answers = [question.answer for question in Question.objects.all()]
+        answer = answers[self.kwargs.get('pk') - 1]
+        answer = answer.title.strip().lower()
+        member_answer = request.data.get('member_answer').strip().lower()
+        is_correct = member_answer == answer
+        return Response({'is_correct': is_correct})

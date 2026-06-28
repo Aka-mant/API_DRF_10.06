@@ -6,7 +6,20 @@ from rest_framework.routers import DefaultRouter
 
 from sections.apps import SectionsConfig
 
-from sections.views import SectionCreateAPIView, SectionRetrieveAPIView, SectionUpdateAPIView, SectionDeleteAPIView, SectionListAPIView, ContentListAPIView, ContentCreateAPIView, ContentRetrieveAPIView, ContentUpdateAPIView, ContentDeleteAPIView
+from sections.views import (
+    SectionCreateAPIView,
+    SectionRetrieveAPIView,
+    SectionUpdateAPIView,
+    SectionDeleteAPIView,
+    SectionListAPIView,
+    ContentListAPIView,
+    ContentCreateAPIView,
+    ContentRetrieveAPIView,
+    ContentUpdateAPIView,
+    ContentDeleteAPIView,
+    QuestionListAPIView,
+    QuestionRetrieveAPIView
+)
 
 app_name = SectionsConfig.name
 
@@ -14,6 +27,7 @@ router = DefaultRouter()
 
 sections = 'sections/'
 content = 'content/'
+questions = 'questions/'
 create = 'create/'
 retrieve = 'retrieve/'
 update = 'update/'
@@ -34,5 +48,9 @@ urlpatterns = [
     path(p.join(content, int_pk), ContentRetrieveAPIView.as_view(), name='content_detail'),
     path(p.join(content, int_pk, update), ContentUpdateAPIView.as_view(), name='content_update'),
     path(p.join(content, int_pk, delete), ContentDeleteAPIView.as_view(), name='content_delete'),
+    # question urlspatterns
+    path(p.join(questions), QuestionListAPIView.as_view(), name='question_list'),
+    path(p.join(questions, int_pk), QuestionRetrieveAPIView.as_view(), name='question_detail'),
+    
 
 ] + router.urls

@@ -53,6 +53,9 @@ class ContentTestAdmin(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()['results'][0]['title'], self.content.title)
 
+    def test_23_str_content(self):
+        self.assertEqual(str(self.content), 'Test Title Content')
+
 
 
 class ContentTestMember(APITestCase):

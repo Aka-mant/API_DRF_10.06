@@ -11,7 +11,7 @@ class SectionTests(APITestCase):
         self.admin_user = get_admin_user()
         response = self.client.post('/users/token/', {'email': self.admin_user.email, 'password': "12346789"}, format='json')
         self.access_token = response.json().get('access')
-        self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.access_token)
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
         self.test_section = get_test_section()
 
     def test_01_section_create(self):
@@ -54,6 +54,10 @@ class SectionTests(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json()['results'][0]['title'], str(self.test_section.title))
 
+    def test_22_section_str_name(self):
+        self.assertEqual(str(self.test_section), 'Test Section')
+
+
 
 
 
@@ -78,6 +82,8 @@ class SectionTestsMember(APITestCase):
         response = self.client.delete(f'/sections/{self.test_section.id}/delete/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(response.json().get('detail'), 'You must be a superuser to perform this action.')
+
+
 
 
 

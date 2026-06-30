@@ -39,3 +39,27 @@ def get_test_section():
     )
 
     return section
+
+
+
+def get_test_content():
+    section = get_test_section()
+    content = Content.objects.create(
+        section=section,
+        title="Test Title Content",
+        content="This is a test content",
+
+    )
+    return content
+
+
+def get_test_question():
+    content = get_test_content()
+    question = Question.objects.create(
+        section=content.section,
+        description="This is a test question description",
+        question = "This is a test question",
+        answer = content,
+
+    )
+    return question

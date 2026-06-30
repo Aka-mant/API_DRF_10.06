@@ -1,7 +1,6 @@
 from django.contrib.auth.base_user import BaseUserManager
 
 
-
 class UserManager(BaseUserManager):
     def normalize_email(self, email):
         email = super().normalize_email(email)

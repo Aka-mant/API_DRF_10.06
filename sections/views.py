@@ -1,16 +1,15 @@
-from rest_framework import request
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, UpdateAPIView, DestroyAPIView
 
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, IsAdminUser
-
+from rest_framework.permissions import IsAuthenticated
 
 from sections.models import Section, Content, Question
 from sections.permitions import IsModerator, IsSuperuser
 from sections.serializers.section_serializers import SectionSerializer, SectionListSerializer
-from sections.serializers.content_serializers import ContentSerializer, ContentListSerializer, ContentSectionSerializer
-from sections.serializers.question_serializers import QuestionSerializer, QuestionSectionSerializer
+from sections.serializers.content_serializers import ContentSerializer, ContentListSerializer
+from sections.serializers.question_serializers import QuestionSerializer
 from sections.paginators import SectionPagination, ContentPagination, QuestionPagination
+
 
 class SectionListAPIView(ListAPIView):
     queryset = Section.objects.all()
@@ -19,9 +18,7 @@ class SectionListAPIView(ListAPIView):
     pagination_class = SectionPagination
 
 
-
 class SectionCreateAPIView(CreateAPIView):
-
     serializer_class = SectionSerializer
     permission_classes = [IsAuthenticated, IsSuperuser | IsModerator]
 
@@ -44,7 +41,6 @@ class SectionDeleteAPIView(DestroyAPIView):
     permission_classes = [IsAuthenticated, IsSuperuser]
 
 
-
 class ContentListAPIView(ListAPIView):
     serializer_class = ContentListSerializer
     queryset = Content.objects.all()
@@ -61,6 +57,7 @@ class ContentRetrieveAPIView(RetrieveAPIView):
     serializer_class = ContentSerializer
     queryset = Content.objects.all()
     permission_classes = [IsAuthenticated]
+
 
 class ContentUpdateAPIView(UpdateAPIView):
     serializer_class = ContentSerializer
@@ -79,6 +76,7 @@ class QuestionListAPIView(ListAPIView):
     queryset = Question.objects.all()
     permission_classes = [IsAuthenticated]
     pagination_class = QuestionPagination
+
 
 class QuestionRetrieveAPIView(RetrieveAPIView):
     serializer_class = QuestionSerializer

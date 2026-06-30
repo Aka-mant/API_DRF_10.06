@@ -1,15 +1,16 @@
 import django
-from  rest_framework.test import APITestCase
+from rest_framework.test import APITestCase
 from rest_framework import status
+from sections.tests.utils import get_member_user, get_admin_user, get_test_section
 
 django.setup()
 
-from sections.tests.utils import get_member_user, get_admin_user, get_test_section
 
 class SectionTests(APITestCase):
     def setUp(self):
         self.admin_user = get_admin_user()
-        response = self.client.post('/users/token/', {'email': self.admin_user.email, 'password': "12346789"}, format='json')
+        response = self.client.post('/users/token/', {'email': self.admin_user.email, 'password': "12346789"},
+                                    format='json')
         self.access_token = response.json().get('access')
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
         self.test_section = get_test_section()
@@ -58,13 +59,11 @@ class SectionTests(APITestCase):
         self.assertEqual(str(self.test_section), 'Test Section')
 
 
-
-
-
 class SectionTestsMember(APITestCase):
     def setUp(self):
         self.member_user = get_member_user()
-        response = self.client.post('/users/token/', {'email': self.member_user.email, 'password': "12346789"}, format='json')
+        response = self.client.post('/users/token/', {'email': self.member_user.email, 'password': "12346789"},
+                                    format='json')
         self.access_token = response.json().get('access')
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
         self.test_section = get_test_section()
@@ -82,9 +81,3 @@ class SectionTestsMember(APITestCase):
         response = self.client.delete(f'/sections/{self.test_section.id}/delete/')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(response.json().get('detail'), 'You must be a superuser to perform this action.')
-
-
-
-
-
-

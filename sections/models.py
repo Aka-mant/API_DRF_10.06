@@ -5,10 +5,10 @@ from django.utils.translation import gettext_lazy as _
 
 from users.models import NULLABLE
 
+
 class Section(models.Model):
     title = models.CharField(max_length=100, verbose_name=_('Title'), unique=True)
     description = models.TextField(verbose_name=_('Description'), **NULLABLE)
-
 
     def __str__(self):
         return self.title
@@ -24,16 +24,14 @@ class Content(models.Model):
     title = models.CharField(max_length=150, verbose_name=_('Title'), unique=True)
     content = models.TextField(verbose_name=_('Content'))
 
-
-
     def __str__(self):
         return self.title
-
 
     class Meta:
         verbose_name = _('Content')
         verbose_name_plural = _('Content')
         ordering = ['id']
+
 
 class Question(models.Model):
     section = models.ForeignKey(Section, on_delete=models.CASCADE, verbose_name=_('Section'))
@@ -42,7 +40,6 @@ class Question(models.Model):
     answer = models.ForeignKey(Content, on_delete=models.CASCADE, verbose_name=_('Answer'), **NULLABLE)
     member_answer = models.TextField(verbose_name=_('Member Answer'), **NULLABLE)
 
-
     def __str__(self):
         return f"Вопрос по курсу {self.section}"
 
@@ -50,5 +47,3 @@ class Question(models.Model):
         verbose_name = _('Question')
         verbose_name_plural = _('Questions')
         ordering = ['section']
-
-

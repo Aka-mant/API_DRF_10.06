@@ -1,5 +1,4 @@
 from rest_framework.test import APITestCase
-from rest_framework import status
 
 from sections.tests.utils import get_admin_user
 from users.models import User
@@ -22,17 +21,13 @@ class UserTestCase(APITestCase):
             self.manager.create_user(email=None, password="123456789")
 
     def test_20_email_normalization(self):
-
         user = self.manager.create_user(
             email='  TeSt@ExAmPle.CoM  ',
             password='password123'
         )
         self.assertEqual(user.email, 'test@example.com')
 
-
     def test_21_create_user_creates_active_non_staff_non_superuser(self):
-
-
         user = self.manager.create_user(
             email='normal@example.com',
             password='password123',

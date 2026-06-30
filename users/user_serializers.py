@@ -1,8 +1,7 @@
 from rest_framework import serializers
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
-from rest_framework_simplejwt.tokens import Token
-from .models import User
 
+from .models import User
 
 from .validators import PasswordValidator
 
@@ -13,16 +12,13 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('id', 'email', 'phone_number', 'is_active',)
 
 
-
 class UserCreateSerializer(serializers.ModelSerializer):
-
     password = serializers.CharField(write_only=True, required=True, min_length=0, max_length=16)
 
     class Meta:
         model = User
-        fields = ('email',  'password', )
+        fields = ('email', 'password',)
         validators = [PasswordValidator(field='password')]
-
 
     def create(self, validated_data):
         user = User.objects.create(**validated_data)
@@ -43,4 +39,3 @@ class UserUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'phone_number', 'is_active',)
-        # validators = [PasswordValidator(field='password')]

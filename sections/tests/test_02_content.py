@@ -1,16 +1,17 @@
 from rest_framework.test import APITestCase
 from rest_framework import status
 
-from  sections.tests.utils import get_member_user, get_admin_user, get_test_content
+from sections.tests.utils import get_member_user, get_admin_user, get_test_content
+
 
 class ContentTestAdmin(APITestCase):
     def setUp(self):
         self.admin_user = get_admin_user()
-        response = self.client.post('/users/token/', {'email': self.admin_user.email, 'password': "12346789"}, format='json')
+        response = self.client.post('/users/token/', {'email': self.admin_user.email, 'password': "12346789"},
+                                    format='json')
         self.access_token = response.json().get('access')
         self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + self.access_token)
         self.content = get_test_content()
-
 
     def test_08_content_create(self):
         data = {
@@ -23,24 +24,20 @@ class ContentTestAdmin(APITestCase):
         self.assertEqual(response.json().get('title'), data['title'])
         self.assertEqual(response.json().get('content'), data['content'])
 
-
     def test_09_content_detail(self):
         response = self.client.get(f'/content/{self.content.id}/', format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json().get('title'), self.content.title)
         self.assertEqual(response.json().get('content'), self.content.content)
 
-
     def test_10_content_update(self):
         data = {
             "title": "Test content title Patch",
-
 
         }
         response = self.client.patch(f'/content/{self.content.id}/update/', data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.json().get('title'), "Test content title Patch")
-
 
     def test_11_content_delete(self):
         response = self.client.delete(f'/content/{self.content.id}/delete/', format='json')
@@ -57,11 +54,11 @@ class ContentTestAdmin(APITestCase):
         self.assertEqual(str(self.content), 'Test Title Content')
 
 
-
 class ContentTestMember(APITestCase):
     def setUp(self):
         self.member_user = get_member_user()
-        response = self.client.post('/users/token/', {'email': self.member_user.email, 'password': "12346789"}, format='json')
+        response = self.client.post('/users/token/', {'email': self.member_user.email, 'password': "12346789"},
+                                    format='json')
         self.access_token = response.json().get('access')
         self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
         self.content = get_test_content()
@@ -88,6 +85,3 @@ class ContentTestMember(APITestCase):
         response = self.client.delete(f'/content/{self.content.id}/delete/', format='json')
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(response.json().get('detail'), "You must be a superuser to perform this action.")
-
-
-

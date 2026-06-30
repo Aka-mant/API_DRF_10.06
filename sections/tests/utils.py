@@ -2,7 +2,6 @@ from users.models import User, UserRoles
 from sections.models import Section, Content, Question
 
 
-
 def get_admin_user():
     user = User.objects.create(
         email="example45@example.com",
@@ -15,6 +14,7 @@ def get_admin_user():
     user.set_password('12346789')
     user.save()
     return user
+
 
 def get_member_user():
     user = User.objects.create(
@@ -30,7 +30,6 @@ def get_member_user():
     return user
 
 
-
 def get_test_section():
     section = Section.objects.create(
         title="Test Section",
@@ -39,7 +38,6 @@ def get_test_section():
     )
 
     return section
-
 
 
 def get_test_content():
@@ -58,11 +56,8 @@ def get_test_question():
     question = Question.objects.create(
         section=content.section,
         description="This is a test question description",
-        question = "This is a test question",
-        answer = content,
+        question="This is a test question",
+        answer=content,
 
     )
     return question
-
-
-

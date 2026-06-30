@@ -1,12 +1,49 @@
-version: '3.8'
-
 services:
-  web:
-    build: .
+  redis:
+    image: redis
     ports:
-      - "8000:8000"
+      - '6379:6379'
+    restart: always
+
+  postgres:
+    image: postgres:15
+    container_name: my_docker511
+    env_file:
+      - .env
+    user: ${POSTGRES_USER}
     environment:
-      - DJANGO_SETTINGS_MODULE=users.settings
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_DOCKER}
+      POSTGRES_DB: ${POSTGRES_DATABASE_DOCKER}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready']
+      interval: 5s
+      retries: 5
+    restart: always
     volumes:
-      - .:/app
-    command: sh /entrypoint.sh
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  api:
+    build: .
+    tty: true
+    command: >
+      bash -c "python manage.py makemigrations
+      && python manage.py migrate
+      && python manage.py loaddata users.json
+      && python manage.py loaddata sections.json
+      && python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - '8000:8000'
+    volumes:
+      - .:/code
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  postgres_data:
+
+    
+
+

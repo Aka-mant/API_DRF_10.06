@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
 from phonenumber_field.modelfields import PhoneNumberField
 from .managers import UserManager
+
 NULLABLE = {
     'blank': True,
     'null': True,
@@ -35,5 +36,3 @@ class User(AbstractUser):
         verbose_name = _('User')
         verbose_name_plural = _('Users')
         ordering = ['lastName', 'firstName']
-
-
